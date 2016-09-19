@@ -1,0 +1,10 @@
+version: "2"
+services:
+  quotes-api:
+    image: "quotes-api:0.0.1-SNAPSHOT"
+  quotes-ui:
+    image: quotes-ui
+    ports:
+      - "8080:80"
+    depends_on:
+      - quotes-api
