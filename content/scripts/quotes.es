@@ -2,28 +2,21 @@
     "use strict";
 
     exports.retrieveQuotes = function retrieveQuotes() {
-        return Promise.resolve(
-            [
-                {
-                    quote: "Hello, world!",
-                    attribution: "Anonymous"
-                },
-                {
-                    quote: "There are only two hard things in computer science: cache invalidation and naming things.",
-                    attribution: "Phil Karlton"
-                },
-                {
-                    quote: "Innovation distinguishes between a leader and a follower.",
-                    attribution: "Steve Jobs"
-                },
-                {
-                    quote: "640 kb ought to be enough for anybody.",
-                    attribution: "Bill Gates"
-                },
-                {
-                    quote: "To thine own self be true.",
-                    attribution: "William Shakespeare"
+        return new Promise(function (resolve, reject) {
+            var request = new XMLHttpRequest();
+            request.open("GET", "/quotes");
+            request.responseType = "json";
+            request.onload = function () {
+                if (this.status >= 200 && this.status < 300) {
+                    resolve(this.response);
+                } else {
+                    reject(this.statusText);
                 }
-            ]);
+            };
+            request.onerror = function () {
+                reject(this.statusText);
+            };
+            request.send();
+        });
     };
 }(this.Quotes = {}));
