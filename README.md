@@ -20,6 +20,7 @@ Running
 The Web application runs inside an NGINX Docker container with the RESTful API inside
 another container.
 
+1. Build the Elm application: `./build.sh`
 1. Build the Docker image: `docker build -t quotes-ui .`
 2. Start the Docker container: `docker run -it -p 8080:80 --name quotes-ui quotes-ui`
 3. Test it by navigating to [http://localhost:8080/](http://localhost:8080/) in

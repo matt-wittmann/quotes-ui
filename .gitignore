@@ -1,2 +1,5 @@
 .idea/
 *.iml
+elm-stuff/**
+!elm-stuff/exact-dependencies.json
+content/elm-scripts
